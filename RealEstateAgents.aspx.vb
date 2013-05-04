@@ -6,6 +6,14 @@ Partial Class RealEstateAgents
         Me.Page.Response.Redirect("~\FlipsRealEstate.aspx")
     End Sub
 
+    Protected Sub btnInsertAgent_Click(sender As Object, e As EventArgs) Handles btnInsertAgent.Click
+        Me.btnInsertAgent.Visible = False
+        Me.dvAgents.Visible = True
+    End Sub
+
+    Protected Shared Sub CancelAgentInsert(sender As Object, e As EventArgs)
+    End Sub
+
     Protected Sub gvAgents_RowDeleting(sender As Object, e As GridViewDeleteEventArgs) Handles gvAgents.RowDeleting
         Me.dsAgents.DeleteParameters.Item("@AgentID").DefaultValue = Me.gvAgents.DataKeys(e.RowIndex).Value
     End Sub

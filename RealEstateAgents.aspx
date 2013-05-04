@@ -16,6 +16,53 @@
         <asp:Label ID="lblAgents" runat="server" Font-Size="X-Large" Text="Flip's Real Estate Agents" />
         <br />
         <br />
+        <br />
+        <asp:LinkButton ID="btnInsertAgent" runat="server" Text="Add New Agent" />
+        <asp:DetailsView ID="dvAgents" runat="server" DataSourceID="dsAgents" DefaultMode="Insert"
+            Visible="false" AutoGenerateRows="false">
+            <Fields>
+                <asp:TemplateField HeaderText="Agent Pic" SortExpression="AgentPic">
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="txtAgentPic" runat="server" Text='<%# Eval("AgentPic")%>' />
+                    </InsertItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="First Name" SortExpression="First Name">
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="txtFirstName" runat="server" Text='<%# Eval("First Name")%>' />
+                    </InsertItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Last Name" SortExpression="Last Name">
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="txtLastName" runat="server" Text='<%# Eval("Last Name")%>' />
+                    </InsertItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Address" SortExpression="Address">
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="txtAddress" runat="server" Text='<%# Eval("Address")%>' />
+                    </InsertItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="City" SortExpression="City">
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="txtCity" runat="server" Text='<%# Eval("City")%>' />
+                    </InsertItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Phone Number" SortExpression="Phone Number">
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="txtPhoneNumber" runat="server" Text='<%# Eval("Phone Number")%>' />
+                    </InsertItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField ShowHeader="false" ItemStyle-HorizontalAlign="Center">
+                    <InsertItemTemplate>
+                        <asp:Button ID="btnInsert" runat="server" CommandName="Insert" Width="60" Text="Insert" />
+                        <asp:Button ID="btnCancel" runat="server" OnClick="CancelAgentInsert" Width="60" Text="Cancel" />
+                    </InsertItemTemplate>
+                </asp:TemplateField>
+            </Fields>
+        </asp:DetailsView>
+        <br />
+        <br />
+        <br />
+        <br />
         <asp:GridView ID="gvAgents" runat="server" AutoGenerateColumns="False" DataKeyNames="AgentID" DataSourceID="dsAgents"
             AllowSorting="true" Width="1058">
             <Columns>
