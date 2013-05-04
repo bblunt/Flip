@@ -26,14 +26,49 @@
                             ImageUrl='<%# "~/Images/AgentPics/" + Eval("AgentPic")%>' />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="txtAgentPic" runat="server" Text='<%# Bind("AgentPic")%>' />
+                        <asp:TextBox ID="txtAgentPic" runat="server" Text='<%# Eval("AgentPic")%>' />
                     </EditItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField DataField="First Name" HeaderText="First Name" SortExpression="First Name" />
-                <asp:BoundField DataField="Last Name" HeaderText="Last Name" SortExpression="Last Name" />
-                <asp:BoundField DataField="Address" HeaderText="Address" SortExpression="Address" />
-                <asp:BoundField DataField="City" HeaderText="City" SortExpression="City" />
-                <asp:BoundField DataField="Phone Number" HeaderText="Phone Number" SortExpression="Phone Number" />
+                <asp:TemplateField HeaderText="First Name" SortExpression="First Name">
+                    <ItemTemplate>
+                        <asp:Label ID="lblFirstName" runat="server" Text='<%# Eval("First Name")%>' />
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="txtFirstName" runat="server" Text='<%# Eval("First Name")%>' />
+                    </EditItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Last Name" SortExpression="Last Name">
+                    <ItemTemplate>
+                        <asp:Label ID="lblLastName" runat="server" Text='<%# Eval("Last Name")%>' />
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="txtLastName" runat="server" Text='<%# Eval("Last Name")%>' />
+                    </EditItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Address" SortExpression="Address">
+                    <ItemTemplate>
+                        <asp:Label ID="lblAddress" runat="server" Text='<%# Eval("Address")%>' />
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="txtAddress" runat="server" Text='<%# Eval("Address")%>' />
+                    </EditItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="City" SortExpression="City">
+                    <ItemTemplate>
+                        <asp:Label ID="lblCity" runat="server" Text='<%# Eval("City")%>' />
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="txtCity" runat="server" Text='<%# Eval("City")%>' />
+                    </EditItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Phone Number" SortExpression="Phone Number">
+                    <ItemTemplate>
+                        <asp:Label ID="lblPhoneNumber" runat="server" Text='<%# Eval("Phone Number")%>' />
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="txtPhoneNumber" runat="server" Text='<%# Eval("Phone Number")%>' />
+                    </EditItemTemplate>
+                </asp:TemplateField>
                 <asp:CommandField ShowEditButton="true" ButtonType="Link" UpdateText="Save"
                     ItemStyle-HorizontalAlign="Center" />
                 <asp:CommandField ShowDeleteButton="true" ButtonType="Link" DeleteText="Delete"
@@ -43,29 +78,29 @@
         <asp:SqlDataSource ID="dsAgents" runat="server" ConnectionString="<%$ ConnectionStrings:RealEstateDatabaseConnection %>"
             ProviderName="<%$ ConnectionStrings:RealEstateDatabaseConnection.ProviderName %>"
             SelectCommand="SELECT * FROM [Agents] ORDER BY [Last Name], [First Name], [AgentID]"
-            DeleteCommand="DELETE FROM [Agents] WHERE (([AgentID] = ?) OR ([AgentID] IS NULL AND ? IS NULL))"
-            InsertCommand="INSERT INTO [Agents] ([AgentID], [Last Name], [First Name], [Address], [City], [Phone Number], [AgentPic]) VALUES (?, ?, ?, ?, ?, ?, ?)"
-            UpdateCommand="UPDATE [Agents] SET [Last Name] = ?, [First Name] = ?, [Address] = ?, [City] = ?, [Phone Number] = ?, [AgentPic] = ? WHERE (([AgentID] = ?) OR ([AgentID] IS NULL AND ? IS NULL))">
+            DeleteCommand="DELETE FROM [Agents] WHERE (([AgentID] = @AgentID) OR ([AgentID] IS NULL AND @AgentID IS NULL))"
+            InsertCommand="INSERT INTO [Agents] ([AgentID], [Last Name], [First Name], [Address], [City], [Phone Number], [AgentPic]) VALUES (@AgentID, @Last_Name, @First_Name, @Address, @City, @Phone_Number, @AgentPic)"
+            UpdateCommand="UPDATE [Agents] SET [Last Name] = @Last_Name, [First Name] = @First_Name, [Address] = @Address, [City] = @City, [Phone Number] = @Phone_Number, [AgentPic] = @AgentPic WHERE (([AgentID] = @AgentID) OR ([AgentID] IS NULL AND @AgentID IS NULL))">
             <DeleteParameters>
-                <asp:Parameter Name="AgentID" Type="String" />
+                <asp:Parameter Name="@AgentID" Type="String" />
             </DeleteParameters>
             <InsertParameters>
-                <asp:Parameter Name="AgentID" Type="String" />
-                <asp:Parameter Name="Last_Name" Type="String" />
-                <asp:Parameter Name="First_Name" Type="String" />
-                <asp:Parameter Name="Address" Type="String" />
-                <asp:Parameter Name="City" Type="String" />
-                <asp:Parameter Name="Phone_Number" Type="String" />
-                <asp:Parameter Name="AgentPic" Type="String" />
+                <asp:Parameter Name="@AgentID" Type="String" />
+                <asp:Parameter Name="@Last_Name" Type="String" />
+                <asp:Parameter Name="@First_Name" Type="String" />
+                <asp:Parameter Name="@Address" Type="String" />
+                <asp:Parameter Name="@City" Type="String" />
+                <asp:Parameter Name="@Phone_Number" Type="String" />
+                <asp:Parameter Name="@AgentPic" Type="String" />
             </InsertParameters>
             <UpdateParameters>
-                <asp:Parameter Name="Last_Name" Type="String" />
-                <asp:Parameter Name="First_Name" Type="String" />
-                <asp:Parameter Name="Address" Type="String" />
-                <asp:Parameter Name="City" Type="String" />
-                <asp:Parameter Name="Phone_Number" Type="String" />
-                <asp:Parameter Name="AgentPic" Type="String" />
-                <asp:Parameter Name="AgentID" Type="String" />
+                <asp:Parameter Name="@Last_Name" Type="String" />
+                <asp:Parameter Name="@First_Name" Type="String" />
+                <asp:Parameter Name="@Address" Type="String" />
+                <asp:Parameter Name="@City" Type="String" />
+                <asp:Parameter Name="@Phone_Number" Type="String" />
+                <asp:Parameter Name="@AgentPic" Type="String" />
+                <asp:Parameter Name="@AgentID" Type="String" />
             </UpdateParameters>
         </asp:SqlDataSource>
     </center>
