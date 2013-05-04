@@ -10,6 +10,8 @@
     <form id="frmFlipsRealEstate" runat="server">
     <div>
     
+        <asp:Image ID="Banner" runat="server" ImageUrl="~/Images/FlipBanner.png" />
+    
     </div>
     </form>
 </body>

@@ -9,7 +9,7 @@
 <body>
     <form id="frmRealEstateListings" runat="server">
     <div>
-    
+    <asp:Image ID="Banner" runat="server" ImageUrl="~/Images/FlipBanner.png" />
     </div>
     </form>
 </body>

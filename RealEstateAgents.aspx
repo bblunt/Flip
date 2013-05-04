@@ -10,7 +10,6 @@
     <form id="frmRealEstateAgents" runat="server">
     <div>
     <center>
-
         <asp:Label ID="lblTitle" runat="server" Font-Size="X-Large" Text="Real Estate Agents"></asp:Label>
         <br />
         <br />
