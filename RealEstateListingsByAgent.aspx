@@ -13,36 +13,33 @@
     <asp:ImageButton ID="imgBanner" runat="server" ImageUrl="~/Images/FlipBanner.png" />
     </div>
     <p>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:RealEstateDatabaseConnection %>" 
-            ProviderName="<%$ ConnectionStrings:RealEstateDatabaseConnection.ProviderName %>" 
-            
+        <asp:SqlDataSource ID="dsListAgents" runat="server"
+            ConnectionString="<%$ ConnectionStrings:RealEstateDatabaseConnection %>"
+            ProviderName="<%$ ConnectionStrings:RealEstateDatabaseConnection.ProviderName %>"
             SelectCommand="SELECT AgentID, [First Name] + ' ' + [Last Name] AS FirstLastName FROM Agents ORDER BY [Last Name]">
         </asp:SqlDataSource>
     </p>
     <p align="center">
-        <asp:Label ID="Label1" runat="server" 
+        <asp:Label ID="lblChooseAgent" runat="server" 
             Text="Choose an agent to see their available listings below"></asp:Label>
     </p>
     <p>
-        <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" 
-            DataSourceID="SqlDataSource1" DataValueField="AgentID" DataTextField="FirstLastName"  >
+        <asp:DropDownList ID="ddlAgent" runat="server" AutoPostBack="True"
+            DataSourceID="dsListAgents" DataValueField="AgentID" DataTextField="FirstLastName"  >
         </asp:DropDownList>
     </p>
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:RealEstateDatabaseConnection %>" 
-            ProviderName="<%$ ConnectionStrings:RealEstateDatabaseConnection.ProviderName %>" 
-            
-            
+        <asp:SqlDataSource ID="dsListByAgent" runat="server"
+            ConnectionString="<%$ ConnectionStrings:RealEstateDatabaseConnection %>"
+            ProviderName="<%$ ConnectionStrings:RealEstateDatabaseConnection.ProviderName %>"
             SelectCommand="SELECT [State], [City], [Address], [Zip], [School District] AS School_District, [AskingPrice], [Taxes], [Number of Stories] AS Number_of_Stories, [Frame Type] AS Frame_Type, [Basement], [Heating Type] AS Heating_Type, [Central Air] AS Central_Air, [Picture] FROM [Listings] WHERE ([AgentID] = ?) ORDER BY [State]">
             <SelectParameters>
-                <asp:ControlParameter ControlID="DropDownList1" Name="AgentID" 
+                <asp:ControlParameter ControlID="ddlAgent" Name="AgentID" 
                     PropertyName="SelectedValue" Type="String" />
             </SelectParameters>
         </asp:SqlDataSource>
     <p>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
-            DataSourceID="SqlDataSource2">
+        <asp:GridView ID="gvListByAgent" runat="server" AutoGenerateColumns="False" 
+            DataSourceID="dsListByAgent">
             <Columns>
                 <asp:BoundField DataField="State" HeaderText="State" SortExpression="State" />
                 <asp:BoundField DataField="City" HeaderText="City" SortExpression="City" />
