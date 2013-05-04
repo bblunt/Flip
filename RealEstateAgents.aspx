@@ -10,7 +10,7 @@
     <form id="frmRealEstateAgents" runat="server">
     <div>
     <center>
-        <asp:Label ID="lblTitle" runat="server" Font-Size="X-Large" Text="Real Estate Agents"></asp:Label>
+        <asp:Image ID="imgBanner" runat="server" ImageUrl="~/Images/FlipBanner.png" />
         <br />
         <br />
         <asp:GridView ID="gvAgents" runat="server" AutoGenerateColumns="False" DataKeyNames="AgentID" DataSourceID="dsAgents"
