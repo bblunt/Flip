@@ -10,7 +10,7 @@
     <form id="frmRealEstateListingsByAgent" runat="server">
     <center>
     <div>
-    <asp:Image ID="imgBanner" runat="server" ImageUrl="~/Images/FlipBanner.png" />
+    <asp:ImageButton ID="imgBanner" runat="server" ImageUrl="~/Images/FlipBanner.png" />
     </div>
     <p>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
