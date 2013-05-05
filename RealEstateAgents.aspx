@@ -17,36 +17,37 @@
         <br />
         <br />
         <br />
-        <asp:LinkButton ID="btnInsertAgent" runat="server" Text="Add New Agent" />
+        <asp:LinkButton ID="btnInsertAgent" runat="server" Text="Add New Agent" ForeColor="Blue"
+            Font-Underline="false" />
         <asp:DetailsView ID="dvAgents" runat="server" DataSourceID="dsAgents" DefaultMode="Insert"
             Visible="false" AutoGenerateRows="false">
             <Fields>
-                <asp:TemplateField HeaderText="Agent Pic" SortExpression="AgentPic">
+                <asp:TemplateField HeaderText="Agent Pic">
                     <InsertItemTemplate>
                         <asp:TextBox ID="txtAgentPic" runat="server" Text='<%# Eval("AgentPic")%>' />
                     </InsertItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="First Name" SortExpression="First Name">
+                <asp:TemplateField HeaderText="First Name">
                     <InsertItemTemplate>
                         <asp:TextBox ID="txtFirstName" runat="server" Text='<%# Eval("First Name")%>' />
                     </InsertItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Last Name" SortExpression="Last Name">
+                <asp:TemplateField HeaderText="Last Name">
                     <InsertItemTemplate>
                         <asp:TextBox ID="txtLastName" runat="server" Text='<%# Eval("Last Name")%>' />
                     </InsertItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Address" SortExpression="Address">
+                <asp:TemplateField HeaderText="Address">
                     <InsertItemTemplate>
                         <asp:TextBox ID="txtAddress" runat="server" Text='<%# Eval("Address")%>' />
                     </InsertItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="City" SortExpression="City">
+                <asp:TemplateField HeaderText="City">
                     <InsertItemTemplate>
                         <asp:TextBox ID="txtCity" runat="server" Text='<%# Eval("City")%>' />
                     </InsertItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Phone Number" SortExpression="Phone Number">
+                <asp:TemplateField HeaderText="Phone Number">
                     <InsertItemTemplate>
                         <asp:TextBox ID="txtPhoneNumber" runat="server" Text='<%# Eval("Phone Number")%>' />
                     </InsertItemTemplate>
@@ -64,7 +65,8 @@
         <br />
         <br />
         <asp:GridView ID="gvAgents" runat="server" AutoGenerateColumns="False" DataKeyNames="AgentID" DataSourceID="dsAgents"
-            AllowSorting="true" Width="1058">
+            AllowSorting="true" Width="1058" BackColor="LightGoldenrodYellow" BorderColor="Tan" ForeColor="Black">
+            <AlternatingRowStyle BackColor="PaleGoldenrod" />
             <Columns>
                 <asp:TemplateField HeaderText="Agent Pic" SortExpression="AgentPic" ItemStyle-HorizontalAlign="Center"
                     ItemStyle-VerticalAlign="Middle">
@@ -117,10 +119,21 @@
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:CommandField ShowEditButton="true" ButtonType="Link" UpdateText="Save"
-                    ItemStyle-HorizontalAlign="Center" />
+                    ItemStyle-HorizontalAlign="Center" ControlStyle-ForeColor="Blue"
+                    ControlStyle-Font-Underline="false" />
                 <asp:CommandField ShowDeleteButton="true" ButtonType="Link" DeleteText="Delete"
-                    ItemStyle-HorizontalAlign="Center" />
+                    ItemStyle-HorizontalAlign="Center" ControlStyle-ForeColor="Blue"
+                    ControlStyle-Font-Underline="false" />
             </Columns>
+            <FooterStyle BackColor="Tan" />
+            <HeaderStyle BackColor="Tan" Font-Bold="True" />
+            <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" 
+                HorizontalAlign="Center" />
+            <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
+            <SortedAscendingCellStyle BackColor="#FAFAE7" />
+            <SortedAscendingHeaderStyle BackColor="#DAC09E" />
+            <SortedDescendingCellStyle BackColor="#E1DB9C" />
+            <SortedDescendingHeaderStyle BackColor="#C2A47B" />
         </asp:GridView>
         <asp:SqlDataSource ID="dsAgents" runat="server" ConnectionString="<%$ ConnectionStrings:RealEstateDatabaseConnection %>"
             ProviderName="<%$ ConnectionStrings:RealEstateDatabaseConnection.ProviderName %>"
