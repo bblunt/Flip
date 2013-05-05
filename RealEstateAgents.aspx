@@ -22,32 +22,32 @@
         <asp:DetailsView ID="dvAgents" runat="server" DataSourceID="dsAgents" DefaultMode="Insert"
             Visible="false" AutoGenerateRows="false">
             <Fields>
-                <asp:TemplateField HeaderText="Agent Pic" SortExpression="AgentPic">
+                <asp:TemplateField HeaderText="Agent Pic">
                     <InsertItemTemplate>
                         <asp:TextBox ID="txtAgentPic" runat="server" Text='<%# Eval("AgentPic")%>' />
                     </InsertItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="First Name" SortExpression="First Name">
+                <asp:TemplateField HeaderText="First Name">
                     <InsertItemTemplate>
                         <asp:TextBox ID="txtFirstName" runat="server" Text='<%# Eval("First Name")%>' />
                     </InsertItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Last Name" SortExpression="Last Name">
+                <asp:TemplateField HeaderText="Last Name">
                     <InsertItemTemplate>
                         <asp:TextBox ID="txtLastName" runat="server" Text='<%# Eval("Last Name")%>' />
                     </InsertItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Address" SortExpression="Address">
+                <asp:TemplateField HeaderText="Address">
                     <InsertItemTemplate>
                         <asp:TextBox ID="txtAddress" runat="server" Text='<%# Eval("Address")%>' />
                     </InsertItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="City" SortExpression="City">
+                <asp:TemplateField HeaderText="City">
                     <InsertItemTemplate>
                         <asp:TextBox ID="txtCity" runat="server" Text='<%# Eval("City")%>' />
                     </InsertItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Phone Number" SortExpression="Phone Number">
+                <asp:TemplateField HeaderText="Phone Number">
                     <InsertItemTemplate>
                         <asp:TextBox ID="txtPhoneNumber" runat="server" Text='<%# Eval("Phone Number")%>' />
                     </InsertItemTemplate>
