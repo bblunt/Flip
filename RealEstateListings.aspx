@@ -9,6 +9,7 @@
 <body>
     <form id="frmRealEstateListings" runat="server">
     <div>
+    <center>
     <asp:ImageButton ID="imgBanner" runat="server" ImageUrl="~/Images/FlipBanner.png" />
             <br />
         <br />
@@ -38,26 +39,124 @@
         <br />
         <br />
         <br />
-        <asp:GridView ID="gvAgents" runat="server" AutoGenerateColumns="False" DataKeyNames="AgentID" DataSourceID="dsAgents"
-            AllowSorting="true" Width="1058" BackColor="LightGoldenrodYellow" BorderColor="Tan" ForeColor="Black">
+        <asp:GridView ID="gvListings" runat="server" AutoGenerateColumns="False" DataKeyNames="Listing Number, AgentID"
+            DataSourceID="dsListings" AllowSorting="true" Width="1058" BackColor="LightGoldenrodYellow" BorderColor="Tan"
+            ForeColor="Black">
             <AlternatingRowStyle BackColor="PaleGoldenrod" />
             <Columns>
-                <asp:TemplateField HeaderText="" SortExpression="" ItemStyle-HorizontalAlign="Center"
+                <asp:TemplateField HeaderText="Picture" SortExpression="Picture" ItemStyle-HorizontalAlign="Center"
                     ItemStyle-VerticalAlign="Middle">
                     <ItemTemplate>
-                        <asp:Image ID="img" runat="server" Height="25%" Width="25%"
-                            ImageUrl='<%# "~/Images/HousePics/" + Eval("")%>' />
+                        <asp:Image ID="imgPicture" runat="server" Height="25%" Width="25%"
+                            ImageUrl='<%# "~/Images/HousePics/" + Eval("Picture")%>' />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="txt" runat="server" Text='<%# Eval("")%>' />
+                        <asp:TextBox ID="txtPicture" runat="server" Text='<%# Eval("Picture")%>' />
                     </EditItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="" SortExpression="">
+                <asp:TemplateField HeaderText="Address" SortExpression="Address">
                     <ItemTemplate>
-                        <asp:Label ID="lbl" runat="server" Text='<%# Eval("")%>' />
+                        <asp:Label ID="lblAddress" runat="server" Text='<%# Eval("Address")%>' />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="txt" runat="server" Text='<%# Eval("")%>' />
+                        <asp:TextBox ID="txtAddress" runat="server" Text='<%# Eval("Address")%>' />
+                    </EditItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="City" SortExpression="City">
+                    <ItemTemplate>
+                        <asp:Label ID="lblCity" runat="server" Text='<%# Eval("City")%>' />
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="txtCity" runat="server" Text='<%# Eval("City")%>' />
+                    </EditItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="State" SortExpression="State">
+                    <ItemTemplate>
+                        <asp:Label ID="lblState" runat="server" Text='<%# Eval("State")%>' />
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="txtState" runat="server" Text='<%# Eval("State")%>' />
+                    </EditItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Zip" SortExpression="Zip">
+                    <ItemTemplate>
+                        <asp:Label ID="lblZip" runat="server" Text='<%# Eval("Zip")%>' />
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="txtZip" runat="server" Text='<%# Eval("Zip")%>' />
+                    </EditItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Number of Stories" SortExpression="Number of Stories">
+                    <ItemTemplate>
+                        <asp:Label ID="lblNumberOfStories" runat="server" Text='<%# Eval("Number of Stories")%>' />
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="txtNumberOfStories" runat="server" Text='<%# Eval("Number of Stories")%>' />
+                    </EditItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Frame Type" SortExpression="Frame Type">
+                    <ItemTemplate>
+                        <asp:Label ID="lblFrameType" runat="server" Text='<%# Eval("Frame Type")%>' />
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="txtFrameType" runat="server" Text='<%# Eval("Frame Type")%>' />
+                    </EditItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Basement" SortExpression="Basement">
+                    <ItemTemplate>
+                        <asp:Label ID="lblBasement" runat="server" Text='<%# Eval("Basement")%>' />
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="txtBasement" runat="server" Text='<%# Eval("Basement")%>' />
+                    </EditItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Heating Type" SortExpression="Heating Type">
+                    <ItemTemplate>
+                        <asp:Label ID="lblHeatingType" runat="server" Text='<%# Eval("Heating Type")%>' />
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="txtHeatingType" runat="server" Text='<%# Eval("Heating Type")%>' />
+                    </EditItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Central Air" SortExpression="Central Air">
+                    <ItemTemplate>
+                        <asp:Label ID="lblCentralAir" runat="server" Text='<%# Eval("Central Air")%>' />
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="txtCentralAir" runat="server" Text='<%# Eval("Central Air")%>' />
+                    </EditItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="School District" SortExpression="School District">
+                    <ItemTemplate>
+                        <asp:Label ID="lblSchoolDistrict" runat="server" Text='<%# Eval("School District")%>' />
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="txtSchoolDistrict" runat="server" Text='<%# Eval("School District")%>' />
+                    </EditItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Agent" SortExpression="Last Name">
+                    <ItemTemplate>
+                        <asp:Label ID="lblAgent" runat="server" Text='<%# Eval("AgentID")%>' />
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:DropDownList ID="ddlAgent" runat="server" DataSourceID="dsAgents"
+                            DataValueField="AgentID" DataTextField="AgentName" />
+                    </EditItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Taxes" SortExpression="Taxes">
+                    <ItemTemplate>
+                        <asp:Label ID="lblTaxes" runat="server" Text='<%# Eval("Taxes")%>' />
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="txtTaxes" runat="server" Text='<%# Eval("Taxes")%>' />
+                    </EditItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="AskingPrice" SortExpression="AskingPrice">
+                    <ItemTemplate>
+                        <asp:Label ID="lblAskingPrice" runat="server" Text='<%# Eval("AskingPrice")%>' />
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="txtAskingPrice" runat="server" Text='<%# Eval("AskingPrice")%>' />
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:CommandField ShowEditButton="true" ButtonType="Link" UpdateText="Save"
@@ -77,6 +176,56 @@
             <SortedDescendingCellStyle BackColor="#E1DB9C" />
             <SortedDescendingHeaderStyle BackColor="#C2A47B" />
         </asp:GridView>
+        <asp:SqlDataSource ID="dsListings" runat="server" ConnectionString="<%$ ConnectionStrings:RealEstateDatabaseConnection %>"
+            ProviderName="<%$ ConnectionStrings:RealEstateDatabaseConnection.ProviderName %>"
+            DeleteCommand="DELETE FROM [Listings] WHERE (([Listing Number] = @Listing_Number) OR ([Listing Number] IS NULL AND @Listing_Number IS NULL))"
+            InsertCommand="INSERT INTO [Listings] ([Listing Number], [Address], [City], [State], [Zip], [Number of Stories], [Frame Type], [Basement], [Heating Type], [Central Air], [Taxes], [School District], [Picture], [AskingPrice], [AgentID]) VALUES (@Listing_Number, @Address, @City, @State, @Zip, @Number_of_Stories, @Frame_Type, @Basement, @Heating_Type, @Central_Air, @Taxes, @School_District, @Picture, @AskingPrice, @AgentID)"
+            SelectCommand="SELECT [li].* FROM [Listings] AS li ORDER BY [li].[State], [li].[City], [li].[Listing Number]"
+            UpdateCommand="UPDATE [Listings] SET [Address] = @Address, [City] = @City, [State] = @State, [Zip] = @Zip, [Number of Stories] = @Number_of_Stories, [Frame Type] = @Frame_Type, [Basement] = @Basement, [Heating Type] = @Heating_Type, [Central Air] = @Central_Air, [Taxes] = @Taxes, [School District] = @School_District, [Picture] = @Picture, [AskingPrice] = @AskingPrice, [AgentID] = @AgentID WHERE (([Listing Number] = @Listing_Number) OR ([Listing Number] IS NULL AND @Listing_Number IS NULL))">
+            <DeleteParameters>
+                <asp:Parameter Name="@Listing_Number" Type="String" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="@Listing_Number" Type="String" />
+                <asp:Parameter Name="@Address" Type="String" />
+                <asp:Parameter Name="@City" Type="String" />
+                <asp:Parameter Name="@State" Type="String" />
+                <asp:Parameter Name="@Zip" Type="String" />
+                <asp:Parameter Name="@Number_of_Stories" Type="String" />
+                <asp:Parameter Name="@Frame_Type" Type="String" />
+                <asp:Parameter Name="@Basement" Type="Boolean" />
+                <asp:Parameter Name="@Heating_Type" Type="String" />
+                <asp:Parameter Name="@Central_Air" Type="String" />
+                <asp:Parameter Name="@Taxes" Type="Decimal" />
+                <asp:Parameter Name="@School_District" Type="String" />
+                <asp:Parameter Name="@Picture" Type="String" />
+                <asp:Parameter Name="@AskingPrice" Type="Decimal" />
+                <asp:Parameter Name="@AgentID" Type="String" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="@Address" Type="String" />
+                <asp:Parameter Name="@City" Type="String" />
+                <asp:Parameter Name="@State" Type="String" />
+                <asp:Parameter Name="@Zip" Type="String" />
+                <asp:Parameter Name="@Number_of_Stories" Type="String" />
+                <asp:Parameter Name="@Frame_Type" Type="String" />
+                <asp:Parameter Name="@Basement" Type="Boolean" />
+                <asp:Parameter Name="@Heating_Type" Type="String" />
+                <asp:Parameter Name="@Central_Air" Type="String" />
+                <asp:Parameter Name="@Taxes" Type="Decimal" />
+                <asp:Parameter Name="@School_District" Type="String" />
+                <asp:Parameter Name="@Picture" Type="String" />
+                <asp:Parameter Name="@AskingPrice" Type="Decimal" />
+                <asp:Parameter Name="@AgentID" Type="String" />
+                <asp:Parameter Name="@Listing_Number" Type="String" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
+        <asp:SqlDataSource ID="dsAgents" runat="server"
+            ConnectionString="<%$ ConnectionStrings:RealEstateDatabaseConnection %>"
+            ProviderName="<%$ ConnectionStrings:RealEstateDatabaseConnection.ProviderName %>"
+            SelectCommand="SELECT AgentID, [First Name] + ' ' + [Last Name] AS AgentName FROM Agents ORDER BY [Last Name]">
+        </asp:SqlDataSource>
+    </center>
     </div>
     </form>
 </body>
