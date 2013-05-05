@@ -11,7 +11,7 @@
     <div>
     <center>
     <asp:ImageButton ID="imgBanner" runat="server" ImageUrl="~/Images/FlipBanner.png" />
-            <br />
+        <br />
         <br />
         <asp:Label ID="lblListings" runat="server" Font-Size="X-Large" Text="Flip's Real Estate Listings" />
         <br />
