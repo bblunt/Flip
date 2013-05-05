@@ -8,7 +8,7 @@
     <style type="text/css">
         .style1
         {
-            width: 80%;
+            width: 1058px;
         }
         .style2
         {
@@ -64,15 +64,15 @@
     <center>
     <table align="center" class="style1">
         <tr>
-            <td bgcolor="#ED1C24" class="style7">
+            <td bgcolor="#ED1C24" class="style7" align="center">
                 <asp:HyperLink ID="HyperLink1" runat="server" 
                     NavigateUrl="~/RealEstateAgents.aspx" style="font-size: xx-large">Agents</asp:HyperLink>
             </td>
-            <td class="style7">
+            <td class="style7" align="center">
                 <asp:HyperLink ID="HyperLink2" runat="server" 
                     NavigateUrl="~/RealEstateListings.aspx" style="font-size: xx-large">Listings</asp:HyperLink>
             </td>
-            <td class="style7" width="237 px">
+            <td class="style7" width="237 px" align="center">
                 <asp:HyperLink ID="HyperLink3" runat="server" 
                     NavigateUrl="~/RealEstateListingsByAgent.aspx" style="font-size: xx-large">Listings by Agent</asp:HyperLink>
             </td>
