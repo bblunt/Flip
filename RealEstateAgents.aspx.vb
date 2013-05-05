@@ -11,7 +11,19 @@ Partial Class RealEstateAgents
         Me.dvAgents.Visible = True
     End Sub
 
-    Protected Shared Sub CancelAgentInsert(sender As Object, e As EventArgs)
+    Protected Sub CancelAgentInsert(sender As Object, e As EventArgs)
+        Me.btnInsertAgent.Visible = True
+        Me.dvAgents.Visible = False
+    End Sub
+
+    Protected Sub dvAgents_ItemInserting(sender As Object, e As DetailsViewInsertEventArgs) Handles dvAgents.ItemInserting
+        'Me.dsAgents.InsertParameters.Item("@AgentPic").DefaultValue =
+        'Me.dsAgents.InsertParameters.Item("@First_Name").DefaultValue =
+        'Me.dsAgents.InsertParameters.Item("@Last_Name").DefaultValue =
+        'Me.dsAgents.InsertParameters.Item("@Address").DefaultValue =
+        'Me.dsAgents.InsertParameters.Item("@City").DefaultValue =
+        'Me.dsAgents.InsertParameters.Item("@Phone_Number").DefaultValue =
+        'Me.dsAgents.InsertParameters.Item("@AgentID").DefaultValue =
     End Sub
 
     Protected Sub gvAgents_RowDeleting(sender As Object, e As GridViewDeleteEventArgs) Handles gvAgents.RowDeleting
