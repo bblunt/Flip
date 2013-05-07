@@ -21,9 +21,12 @@ Partial Class FlipRealEstate
                 End If
             Next
             countryList.Sort()
+
             'Bind the CountryDropDownList control.
             Me.CountryDropDownList.DataSource = countryList
             Me.CountryDropDownList.DataBind()
+            ' change the selected index here.
+            Me.CountryDropDownList.SelectedIndex = 196
             Me.CountryDropDownList_SelectedIndexChanged(Me.CountryDropDownList, New EventArgs)
         End If
     End Sub
@@ -46,6 +49,7 @@ Partial Class FlipRealEstate
             'Bind the CityDropDownList control.
             Me.CityDropDownList.DataSource = cityList
             Me.CityDropDownList.DataBind()
+            Me.CityDropDownList.SelectedIndex = 236
         Else
             Me.CityDropDownList.DataSource = Nothing
             Me.CityDropDownList.DataBind()

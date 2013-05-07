@@ -127,7 +127,7 @@
                 </tr>
             </table>
             <br class="style6" />
-            <asp:Button ID="NewWeatherButton" runat="server" Text="New Weather" 
+            <asp:Button ID="NewWeatherButton" runat="server" Text="Update weather location data" 
                 Height="26px" CssClass="style5" />
         </center>
         </center>
