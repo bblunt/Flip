@@ -28,6 +28,22 @@ Partial Class RealEstateListings
         Me.dvListings.Visible = False
     End Sub
 
+    Protected Sub ddlSecretAgent_DataBound(sender As Object, e As System.EventArgs) Handles ddlSecretAgent.DataBound
+        For Each pDataRow As GridViewRow In Me.gvListings.Rows
+            Dim pAgentID As System.Int32 = System.Convert.ToInt32(CType(pDataRow.FindControl("lblAgent"), WebControls.Label).Text)
+            Dim pAgentName As System.String = ""
+            Dim pIndex As System.Int32 = 0
+            For Each pItem As ListItem In Me.ddlSecretAgent.Items
+                If System.Convert.ToInt32(pItem.Value) = pAgentID Then
+                    pAgentName = System.Convert.ToString(pItem.Text)
+                    Exit For
+                End If
+            Next
+            CType(pDataRow.FindControl("lblAgent"), WebControls.Label).Text = pAgentName
+        Next
+        Me.ddlSecretAgent.Visible = False
+    End Sub
+
     Protected Sub gvListings_RowDeleting(sender As Object, e As GridViewDeleteEventArgs) Handles gvListings.RowDeleting
         'Me.dsListings.DeleteParameters.Item("@").DefaultValue = Me.gvListings.DataKeys(e.RowIndex).Value
     End Sub

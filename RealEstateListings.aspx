@@ -39,6 +39,8 @@
         <br />
         <br />
         <br />
+        <asp:DropDownList ID="ddlSecretAgent" runat="server" DataSourceID="dsAgents" DataValueField="AgentID"
+            DataTextField="AgentName" />
         <asp:GridView ID="gvListings" runat="server" AutoGenerateColumns="False" DataKeyNames="Listing Number, AgentID"
             DataSourceID="dsListings" AllowSorting="true" Width="1058" BackColor="LightGoldenrodYellow" BorderColor="Tan"
             ForeColor="Black">
@@ -134,7 +136,7 @@
                         <asp:TextBox ID="txtSchoolDistrict" runat="server" Text='<%# Eval("School District")%>' />
                     </EditItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Agent" SortExpression="Last Name">
+                <asp:TemplateField HeaderText="Agent" SortExpression="AgentID">
                     <ItemTemplate>
                         <asp:Label ID="lblAgent" runat="server" Text='<%# Eval("AgentID")%>' />
                     </ItemTemplate>
@@ -223,7 +225,7 @@
         <asp:SqlDataSource ID="dsAgents" runat="server"
             ConnectionString="<%$ ConnectionStrings:RealEstateDatabaseConnection %>"
             ProviderName="<%$ ConnectionStrings:RealEstateDatabaseConnection.ProviderName %>"
-            SelectCommand="SELECT AgentID, [First Name] + ' ' + [Last Name] AS AgentName FROM Agents ORDER BY [Last Name]">
+            SelectCommand="SELECT [AgentID], [First Name] + ' ' + [Last Name] AS AgentName FROM Agents">
         </asp:SqlDataSource>
     </center>
     </div>
