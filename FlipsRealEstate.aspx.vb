@@ -1,9 +1,19 @@
 Imports System.Xml
 Imports net.webservicex.www
 
+
+
 Partial Class FlipRealEstate
     Inherits System.Web.UI.Page
+    Dim clickCount As Integer
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If Session("ClickCount") Is Nothing Then
+            clickCount = 0
+        Else
+            clickCount = CInt(Session("ClickCount"))
+        End If
+
         If Not Me.IsPostBack Then
             'Create a new global weather object
             Dim proxy As New GlobalWeather
@@ -26,11 +36,16 @@ Partial Class FlipRealEstate
             Me.CountryDropDownList.DataSource = countryList
             Me.CountryDropDownList.DataBind()
             ' change the selected index here.
-            Me.CountryDropDownList.SelectedIndex = 196
+            If clickCount = 0 Then
+                Me.CountryDropDownList.SelectedIndex = 196
+            Else
+            End If
             Me.CountryDropDownList_SelectedIndexChanged(Me.CountryDropDownList, New EventArgs)
         End If
+
     End Sub
     Protected Sub CountryDropDownList_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CountryDropDownList.SelectedIndexChanged
+
         If Me.CountryDropDownList.SelectedItem IsNot Nothing Then
             Dim cityList As New List(Of String)
             Dim proxy As New GlobalWeather
@@ -49,7 +64,9 @@ Partial Class FlipRealEstate
             'Bind the CityDropDownList control.
             Me.CityDropDownList.DataSource = cityList
             Me.CityDropDownList.DataBind()
-            Me.CityDropDownList.SelectedIndex = 236
+            If clickCount = 0 And Me.CountryDropDownList.SelectedIndex = 196 Then
+                Me.CityDropDownList.SelectedIndex = 236
+            End If
         Else
             Me.CityDropDownList.DataSource = Nothing
             Me.CityDropDownList.DataBind()
@@ -89,6 +106,7 @@ Partial Class FlipRealEstate
 
     End Sub
     Protected Sub NewWeatherButton_Click(sender As Object, e As System.EventArgs)
+        clickCount += 1
         If Not Me.IsPostBack Then
             'Create a new global weather object
             Dim proxy As New GlobalWeather
@@ -112,4 +130,12 @@ Partial Class FlipRealEstate
             Me.CountryDropDownList_SelectedIndexChanged(Me.CountryDropDownList, New EventArgs)
         End If
     End Sub
+
+    Protected Sub Page_PreRender(sender As Object, e As System.EventArgs) Handles Me.PreRender
+        Session("ClickCount") = clickCount
+    End Sub
 End Class
+
+
+
+
