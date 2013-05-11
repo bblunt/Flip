@@ -5,6 +5,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title>Real Estate Listings By Agent</title>
+    <style type="text/css">
+
+        .style1
+        {
+            width: 22%;
+        }
+        .style2
+        {
+            height: 28px;
+        }
+        </style>
     </head>
 <body>
     <form id="frmRealEstateListingsByAgent" runat="server">
@@ -106,6 +117,33 @@
             </Fields>
         </asp:DetailsView>
         <br />
+        <table class="style1" align="center">
+            <tr>
+                <td>
+                    <asp:Label ID="lblPassword" runat="server" 
+                        Text="To make changes, please enter the password."></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td class="style2">
+                    <asp:TextBox ID="tbPassword" runat="server" style="text-align: center" 
+                        TextMode="Password"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:CustomValidator ID="CustomValidator1" runat="server" 
+                        ErrorMessage="Password invalid. Access denied." ValidationGroup="Password" ></asp:CustomValidator>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Button ID="btnOkPassword" runat="server" Height="27px" 
+                        style="margin-left: 4px" Text="OK" ValidationGroup="Password" AutoPostback="True"
+                        Width="61px"/>
+                </td>
+            </tr>
+        </table>
         <br />
         <br />
         <asp:GridView ID="gvListings" runat="server" AutoGenerateColumns="False" DataKeyNames="Listing Number, AgentID"
@@ -226,12 +264,18 @@
                         <asp:TextBox ID="txtAskingPrice" runat="server" Text='<%# Eval("AskingPrice")%>' />
                     </EditItemTemplate>
                 </asp:TemplateField>
-                <asp:CommandField ShowEditButton="true" ButtonType="Link" UpdateText="Save"
-                    ItemStyle-HorizontalAlign="Center" ControlStyle-ForeColor="Blue"
-                    ControlStyle-Font-Underline="false" />
-                <asp:CommandField ShowDeleteButton="true" ButtonType="Link" DeleteText="Delete"
-                    ItemStyle-HorizontalAlign="Center" ControlStyle-ForeColor="Blue"
-                    ControlStyle-Font-Underline="false" />
+                 <asp:TemplateField ShowHeader="False">
+                    <EditItemTemplate>
+                        <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="True" CommandName="Update" Text="Save" />
+                        <asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:LinkButton ID="LinkButton3" runat="server" CausesValidation="False" CommandName="Edit" 
+                            Text="Edit" />
+                        <asp:LinkButton ID="LinkButton4" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete"
+                            OnClientClick="return confirm('Are you certain you want to delete this listing?')" />
+                    </ItemTemplate>
+                </asp:TemplateField>
             </Columns>
             <FooterStyle BackColor="Tan" />
             <HeaderStyle BackColor="Tan" Font-Bold="True" />
