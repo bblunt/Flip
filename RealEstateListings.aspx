@@ -10,7 +10,7 @@
     <form id="frmRealEstateListings" runat="server">
     <div>
     <center>
-    <asp:ImageButton ID="imgBanner" runat="server" ImageUrl="~/Images/FlipBanner.png" />
+        <asp:ImageButton ID="imgBanner" runat="server" ImageUrl="~/Images/FlipBanner.png" />
         <br />
         <br />
         <asp:Label ID="lblListings" runat="server" Font-Size="X-Large" Text="Flip's Real Estate Listings" />
@@ -22,9 +22,81 @@
         <asp:DetailsView ID="dvListings" runat="server" DataSourceID="dsListings" DefaultMode="Insert"
             Visible="false" AutoGenerateRows="false">
             <Fields>
-                <asp:TemplateField HeaderText="">
+                <asp:TemplateField HeaderText="Picture">
                     <InsertItemTemplate>
-                        <asp:TextBox ID="txt" runat="server" Text='<%# Eval("")%>' />
+                        <asp:TextBox ID="txtPicture" runat="server" Text='<%# Eval("Picture")%>' />
+                    </InsertItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Address">
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="txtAddress" runat="server" Text='<%# Eval("Address")%>' />
+                    </InsertItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="City">
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="txtCity" runat="server" Text='<%# Eval("City")%>' />
+                    </InsertItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="State">
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="txtState" runat="server" Text='<%# Eval("State")%>' />
+                    </InsertItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Zip">
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="txtZip" runat="server" Text='<%# Eval("Zip")%>' />
+                    </InsertItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Number of Stories">
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="txtNumberOfStories" runat="server" Text='<%# Eval("Number of Stories")%>' />
+                    </InsertItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Frame Type">
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="txtFrameType" runat="server" Text='<%# Eval("Frame Type")%>' />
+                    </InsertItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Basement">
+                    <InsertItemTemplate>
+                        <asp:DropDownList ID="ddlBasement" runat="server">
+                            <asp:ListItem Text="True" Value="True" />
+                            <asp:ListItem Text="False" Value="False" />
+                        </asp:DropDownList>
+                    </InsertItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Heating Type">
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="txtHeatingType" runat="server" Text='<%# Eval("Heating Type")%>' />
+                    </InsertItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Central Air">
+                    <InsertItemTemplate>
+                        <asp:DropDownList ID="ddlCentralAir" runat="server">
+                            <asp:ListItem Text="Yes" Value="Yes" />
+                            <asp:ListItem Text="No" Value="No" />
+                        </asp:DropDownList>
+                    </InsertItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="School District">
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="txtSchoolDistrict" runat="server" Text='<%# Eval("School District")%>' />
+                    </InsertItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Agent">
+                    <InsertItemTemplate>
+                        <asp:DropDownList ID="ddlAgent" runat="server" DataSourceID="dsAgents"
+                            DataValueField="AgentID" DataTextField="AgentName" />
+                    </InsertItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Taxes">
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="txtTaxes" runat="server" Text='<%# Eval("Taxes")%>' />
+                    </InsertItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Asking Price">
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="txtAskingPrice" runat="server" Text='<%# Eval("AskingPrice")%>' />
                     </InsertItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField ShowHeader="false" ItemStyle-HorizontalAlign="Center">
@@ -109,7 +181,10 @@
                         <asp:Label ID="lblBasement" runat="server" Text='<%# Eval("Basement")%>' />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="txtBasement" runat="server" Text='<%# Eval("Basement")%>' />
+                        <asp:DropDownList ID="ddlBasement" runat="server" SelectedValue='<%# Eval("Basement")%>'>
+                            <asp:ListItem Text="True" Value="True" />
+                            <asp:ListItem Text="False" Value="False" />
+                        </asp:DropDownList>
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Heating Type" SortExpression="Heating Type">
@@ -125,7 +200,11 @@
                         <asp:Label ID="lblCentralAir" runat="server" Text='<%# Eval("Central Air")%>' />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="txtCentralAir" runat="server" Text='<%# Eval("Central Air")%>' />
+                        <asp:DropDownList ID="ddlCentralAir" runat="server"
+                            SelectedValue='<%# Eval("Central Air")%>'>
+                            <asp:ListItem Text="Yes" Value="Yes" />
+                            <asp:ListItem Text="No" Value="No" />
+                        </asp:DropDownList>
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="School District" SortExpression="School District">
@@ -142,20 +221,21 @@
                     </ItemTemplate>
                     <EditItemTemplate>
                         <asp:DropDownList ID="ddlAgent" runat="server" DataSourceID="dsAgents"
-                            DataValueField="AgentID" DataTextField="AgentName" />
+                            DataValueField="AgentID" SelectedValue='<%# Eval("AgentID")%>'
+                            DataTextField="AgentName" />
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Taxes" SortExpression="Taxes">
                     <ItemTemplate>
-                        <asp:Label ID="lblTaxes" runat="server" Text='<%# Eval("Taxes")%>' />
+                        <asp:Label ID="lblTaxes" runat="server" Text='<%# FormatCurrency(Eval("Taxes"))%>' />
                     </ItemTemplate>
                     <EditItemTemplate>
                         <asp:TextBox ID="txtTaxes" runat="server" Text='<%# Eval("Taxes")%>' />
                     </EditItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="AskingPrice" SortExpression="AskingPrice">
+                <asp:TemplateField HeaderText="Asking Price" SortExpression="AskingPrice">
                     <ItemTemplate>
-                        <asp:Label ID="lblAskingPrice" runat="server" Text='<%# Eval("AskingPrice")%>' />
+                        <asp:Label ID="lblAskingPrice" runat="server" Text='<%# FormatCurrency(Eval("AskingPrice"))%>' />
                     </ItemTemplate>
                     <EditItemTemplate>
                         <asp:TextBox ID="txtAskingPrice" runat="server" Text='<%# Eval("AskingPrice")%>' />
