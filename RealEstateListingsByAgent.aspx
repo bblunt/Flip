@@ -22,7 +22,7 @@
         <br />
         <br />
         <asp:LinkButton ID="btnInsertListing" runat="server" Text="Add New Listing For Agent" ForeColor="Blue"
-            Font-Underline="false" />
+            Font-Underline="false" Visible="false" />
         <asp:DetailsView ID="dvListings" runat="server" DataSourceID="dsListings" DefaultMode="Insert"
             Visible="false" AutoGenerateRows="false">
             <Fields>
@@ -276,7 +276,8 @@
                 <asp:Parameter Name="@School_District" Type="String" />
                 <asp:Parameter Name="@Picture" Type="String" />
                 <asp:Parameter Name="@AskingPrice" Type="Decimal" />
-                <asp:Parameter Name="@AgentID" Type="String" />
+                <asp:ControlParameter ControlID="ddlAgent" Name="@AgentID" 
+                    PropertyName="SelectedValue" Type="String" />
             </InsertParameters>
             <UpdateParameters>
                 <asp:Parameter Name="@Address" Type="String" />
@@ -292,7 +293,8 @@
                 <asp:Parameter Name="@School_District" Type="String" />
                 <asp:Parameter Name="@Picture" Type="String" />
                 <asp:Parameter Name="@AskingPrice" Type="Decimal" />
-                <asp:Parameter Name="@AgentID" Type="String" />
+                <asp:ControlParameter ControlID="ddlAgent" Name="@AgentID" 
+                    PropertyName="SelectedValue" Type="String" />
                 <asp:Parameter Name="@Listing_Number" Type="String" />
             </UpdateParameters>
         </asp:SqlDataSource>

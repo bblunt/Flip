@@ -8,6 +8,21 @@ Partial Class RealEstateListingsByAgent
         Me.Page.Response.Redirect("~\FlipsRealEstate.aspx")
     End Sub
 
+    Protected Sub ddlAgent_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlAgent.SelectedIndexChanged
+        If Me.ddlAgent.SelectedIndex > 0 Then
+            Me.gvListings.Columns(13).Visible = True
+            Me.gvListings.Columns(14).Visible = True
+            If Me.dvListings.Visible = False Then
+                Me.btnInsertListing.Visible = True
+            End If
+        Else
+            Me.gvListings.Columns(13).Visible = False
+            Me.gvListings.Columns(14).Visible = False
+            Me.dvListings.Visible = False
+            Me.btnInsertListing.Visible = False
+        End If
+    End Sub
+
     Protected Sub btnInsertListing_Click(sender As Object, e As EventArgs) Handles btnInsertListing.Click
         Me.btnInsertListing.Visible = False
         Me.dvListings.Visible = True
@@ -46,7 +61,7 @@ Partial Class RealEstateListingsByAgent
             CType(Me.dvListings.FindControl("txtPicture"), WebControls.TextBox).Text
         Me.dsListings.InsertParameters.Item("@AskingPrice").DefaultValue = _
             CType(Me.dvListings.FindControl("txtAskingPrice"), WebControls.TextBox).Text
-        Me.dsListings.InsertParameters.Item("@AgentID").DefaultValue = Me.ddlAgent.SelectedValue
+        'Me.dsListings.InsertParameters.Item("@AgentID").DefaultValue = Me.ddlAgent.SelectedValue
     End Sub
 
     Protected Sub dvListings_ItemInserted(sender As Object, e As DetailsViewInsertedEventArgs) Handles dvListings.ItemInserted
@@ -61,7 +76,10 @@ Partial Class RealEstateListingsByAgent
     End Function
 
     Protected Sub gvListings_DataBound(sender As Object, e As EventArgs) Handles gvListings.DataBound
-        pNewListingNumber = Me.gvListings.DataKeys.Count + 1
+        If Me.IsPostBack = False Then
+            Me.gvListings.Columns(13).Visible = False
+            Me.gvListings.Columns(14).Visible = False
+        End If
     End Sub
 
     Protected Sub gvListings_RowDeleting(sender As Object, e As GridViewDeleteEventArgs) Handles gvListings.RowDeleting
@@ -96,7 +114,7 @@ Partial Class RealEstateListingsByAgent
             CType(Me.gvListings.Rows(e.RowIndex).FindControl("txtPicture"), WebControls.TextBox).Text
         Me.dsListings.UpdateParameters.Item("@AskingPrice").DefaultValue = _
             CType(Me.gvListings.Rows(e.RowIndex).FindControl("txtAskingPrice"), WebControls.TextBox).Text
-        Me.dsListings.InsertParameters.Item("@AgentID").DefaultValue = Me.ddlAgent.SelectedValue
+        'Me.dsListings.InsertParameters.Item("@AgentID").DefaultValue = Me.ddlAgent.SelectedValue
         Me.dsListings.UpdateParameters.Item("@Listing_Number").DefaultValue = _
             Me.gvListings.DataKeys(e.RowIndex).Values("Listing Number").ToString()
     End Sub
