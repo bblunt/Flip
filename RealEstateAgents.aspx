@@ -33,7 +33,7 @@
         <br />
         <br />
         <asp:LinkButton ID="btnInsertAgent" runat="server" Text="Add New Agent" ForeColor="Blue"
-            Font-Underline="false" />
+            Font-Underline="false" Visible="False" />
         <br />
         <br />
         <table class="style3">
@@ -129,8 +129,10 @@
         <br />
         <br />
         <br />
-        <asp:GridView ID="gvAgents" runat="server" AutoGenerateColumns="False" DataKeyNames="AgentID" DataSourceID="dsAgents"
-            AllowSorting="true" Width="1058" BackColor="LightGoldenrodYellow" BorderColor="Tan" ForeColor="Black">
+        <asp:GridView ID="gvAgents" runat="server" AutoGenerateColumns="False" 
+            DataKeyNames="AgentID" DataSourceID="dsAgents"
+            AllowSorting="True" Width="1058px" BackColor="LightGoldenrodYellow" 
+            BorderColor="Tan" ForeColor="Black">
             <AlternatingRowStyle BackColor="PaleGoldenrod" />
             <Columns>
                 <asp:TemplateField HeaderText="Agent Pic" SortExpression="AgentPic" ItemStyle-HorizontalAlign="Center"
@@ -190,11 +192,11 @@
                         <asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Cancel"
                             Text="Cancel"></asp:LinkButton>
                     </EditItemTemplate>
-                    <ItemTemplate>
+                    <ItemTemplate> 
                         <asp:LinkButton ID="EditButton1" runat="server" CausesValidation="False" CommandName="Edit" 
-                            Text="Edit"></asp:LinkButton>
+                            Text="Edit" ></asp:LinkButton>
                             <asp:LinkButton ID="DeleteButton1" runat="server" CausesValidation="False" CommandName="Delete" 
-                            Text="Delete" OnClientClick="return confirm('Are you certain you want to delete this agent?')"></asp:LinkButton>
+                            Text="Delete"  OnClientClick="return confirm('Are you certain you want to delete this agent?')"></asp:LinkButton>
 
                     </ItemTemplate>
                 </asp:TemplateField>

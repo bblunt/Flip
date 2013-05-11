@@ -130,10 +130,6 @@ Partial Class FlipRealEstate
             Me.CountryDropDownList_SelectedIndexChanged(Me.CountryDropDownList, New EventArgs)
         End If
     End Sub
-
-    Protected Sub Page_PreRender(sender As Object, e As System.EventArgs) Handles Me.PreRender
-        Session("ClickCount") = clickCount
-    End Sub
 End Class
 
 
