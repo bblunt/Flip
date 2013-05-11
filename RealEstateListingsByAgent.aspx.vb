@@ -61,7 +61,6 @@ Partial Class RealEstateListingsByAgent
             CType(Me.dvListings.FindControl("txtPicture"), WebControls.TextBox).Text
         Me.dsListings.InsertParameters.Item("@AskingPrice").DefaultValue = _
             CType(Me.dvListings.FindControl("txtAskingPrice"), WebControls.TextBox).Text
-        'Me.dsListings.InsertParameters.Item("@AgentID").DefaultValue = Me.ddlAgent.SelectedValue
     End Sub
 
     Protected Sub dvListings_ItemInserted(sender As Object, e As DetailsViewInsertedEventArgs) Handles dvListings.ItemInserted
@@ -114,7 +113,6 @@ Partial Class RealEstateListingsByAgent
             CType(Me.gvListings.Rows(e.RowIndex).FindControl("txtPicture"), WebControls.TextBox).Text
         Me.dsListings.UpdateParameters.Item("@AskingPrice").DefaultValue = _
             CType(Me.gvListings.Rows(e.RowIndex).FindControl("txtAskingPrice"), WebControls.TextBox).Text
-        'Me.dsListings.InsertParameters.Item("@AgentID").DefaultValue = Me.ddlAgent.SelectedValue
         Me.dsListings.UpdateParameters.Item("@Listing_Number").DefaultValue = _
             Me.gvListings.DataKeys(e.RowIndex).Values("Listing Number").ToString()
     End Sub
