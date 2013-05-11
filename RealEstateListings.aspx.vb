@@ -48,6 +48,10 @@ Partial Class RealEstateListings
         'Me.dsListings.DeleteParameters.Item("@").DefaultValue = Me.gvListings.DataKeys(e.RowIndex).Value
     End Sub
 
+    Protected Sub gvListings_RowEditing(sender As Object, e As GridViewEditEventArgs) Handles gvListings.RowEditing
+
+    End Sub
+
     Protected Sub gvListings_RowUpdating(sender As Object, e As GridViewUpdateEventArgs) Handles gvListings.RowUpdating
         'Me.dsListings.UpdateParameters.Item("@").DefaultValue = _
         '    CType(Me.gvListings.Rows(e.RowIndex).FindControl("txt"), WebControls.TextBox).Text
