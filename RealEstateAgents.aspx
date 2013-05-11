@@ -49,31 +49,43 @@
                 <asp:TemplateField HeaderText="Agent Pic">
                     <InsertItemTemplate>
                         <asp:TextBox ID="txtAgentPic" runat="server" Text='<%# Eval("AgentPic")%>' />
+                        <asp:RequiredFieldValidator ID="valAgentPic" runat="server" 
+                                ControlToValidate="txtAgentPic" ErrorMessage="*" ForeColor="Red" />
                     </InsertItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="First Name">
                     <InsertItemTemplate>
                         <asp:TextBox ID="txtFirstName" runat="server" Text='<%# Eval("First Name")%>' />
+                        <asp:RequiredFieldValidator ID="valFirstName" runat="server" 
+                                ControlToValidate="txtFirstName" ErrorMessage="*" ForeColor="Red" />
                     </InsertItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Last Name">
                     <InsertItemTemplate>
                         <asp:TextBox ID="txtLastName" runat="server" Text='<%# Eval("Last Name")%>' />
+                        <asp:RequiredFieldValidator ID="valLastName" runat="server" 
+                                ControlToValidate="txtLastName" ErrorMessage="*" ForeColor="Red" />
                     </InsertItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Address">
                     <InsertItemTemplate>
                         <asp:TextBox ID="txtAddress" runat="server" Text='<%# Eval("Address")%>' />
+                        <asp:RequiredFieldValidator ID="valAddress" runat="server" 
+                                ControlToValidate="txtAddress" ErrorMessage="*" ForeColor="Red" />
                     </InsertItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="City">
                     <InsertItemTemplate>
                         <asp:TextBox ID="txtCity" runat="server" Text='<%# Eval("City")%>' />
+                        <asp:RequiredFieldValidator ID="valCity" runat="server" 
+                                ControlToValidate="txtCity" ErrorMessage="*" ForeColor="Red" />
                     </InsertItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Phone Number">
                     <InsertItemTemplate>
                         <asp:TextBox ID="txtPhoneNumber" runat="server" Text='<%# Eval("Phone Number")%>' />
+                        <asp:RequiredFieldValidator ID="valPhoneNumber" runat="server" 
+                                ControlToValidate="txtPhoneNumber" ErrorMessage="*" ForeColor="Red" />
                     </InsertItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField ShowHeader="false" ItemStyle-HorizontalAlign="Center">
@@ -90,7 +102,6 @@
             <tr>
                 <td>
         <table class="style1" align="center">
-        
             <tr>
                 <td>
                     <asp:Label ID="lblPassword" runat="server" 
@@ -124,11 +135,6 @@
         </table>
         <br />
         <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
         <asp:GridView ID="gvAgents" runat="server" AutoGenerateColumns="False" 
             DataKeyNames="AgentID" DataSourceID="dsAgents"
             AllowSorting="True" Width="1058px" BackColor="LightGoldenrodYellow" 
@@ -143,6 +149,8 @@
                     </ItemTemplate>
                     <EditItemTemplate>
                         <asp:TextBox ID="txtAgentPic" runat="server" Text='<%# Eval("AgentPic")%>' />
+                        <asp:RequiredFieldValidator ID="valAgentPic" runat="server" 
+                                ControlToValidate="txtAgentPic" ErrorMessage="*" ForeColor="Red" />
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="First Name" SortExpression="First Name">
@@ -151,6 +159,8 @@
                     </ItemTemplate>
                     <EditItemTemplate>
                         <asp:TextBox ID="txtFirstName" runat="server" Text='<%# Eval("First Name")%>' />
+                        <asp:RequiredFieldValidator ID="valFirstName" runat="server" 
+                                ControlToValidate="txtFirstName" ErrorMessage="*" ForeColor="Red" />
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Last Name" SortExpression="Last Name">
@@ -159,6 +169,8 @@
                     </ItemTemplate>
                     <EditItemTemplate>
                         <asp:TextBox ID="txtLastName" runat="server" Text='<%# Eval("Last Name")%>' />
+                        <asp:RequiredFieldValidator ID="valLastName" runat="server" 
+                                ControlToValidate="txtLastName" ErrorMessage="*" ForeColor="Red" />
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Address" SortExpression="Address">
@@ -167,6 +179,8 @@
                     </ItemTemplate>
                     <EditItemTemplate>
                         <asp:TextBox ID="txtAddress" runat="server" Text='<%# Eval("Address")%>' />
+                        <asp:RequiredFieldValidator ID="valAddress" runat="server" 
+                                ControlToValidate="txtAddress" ErrorMessage="*" ForeColor="Red" />
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="City" SortExpression="City">
@@ -175,6 +189,8 @@
                     </ItemTemplate>
                     <EditItemTemplate>
                         <asp:TextBox ID="txtCity" runat="server" Text='<%# Eval("City")%>' />
+                        <asp:RequiredFieldValidator ID="valCity" runat="server" 
+                                ControlToValidate="txtCity" ErrorMessage="*" ForeColor="Red" />
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Phone Number" SortExpression="Phone Number">
@@ -183,26 +199,22 @@
                     </ItemTemplate>
                     <EditItemTemplate>
                         <asp:TextBox ID="txtPhoneNumber" runat="server" Text='<%# Eval("Phone Number")%>' />
+                        <asp:RequiredFieldValidator ID="valPhoneNumber" runat="server" 
+                                ControlToValidate="txtPhoneNumber" ErrorMessage="*" ForeColor="Red" />
                     </EditItemTemplate>
                 </asp:TemplateField>
                  <asp:TemplateField ShowHeader="False">
                     <EditItemTemplate>
-                        <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="True" CommandName="Update"
-                            Text="Update"></asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Cancel"
-                            Text="Cancel"></asp:LinkButton>
+                        <asp:LinkButton runat="server" CausesValidation="True" CommandName="Update" Text="Save" />
+                        <asp:LinkButton runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
                     </EditItemTemplate>
-                    <ItemTemplate> 
-                        <asp:LinkButton ID="EditButton1" runat="server" CausesValidation="False" CommandName="Edit" 
-                            Text="Edit" ></asp:LinkButton>
-                            <asp:LinkButton ID="DeleteButton1" runat="server" CausesValidation="False" CommandName="Delete" 
-                            Text="Delete"  OnClientClick="return confirm('Are you certain you want to delete this agent?')"></asp:LinkButton>
-
+                    <ItemTemplate>
+                        <asp:LinkButton runat="server" CausesValidation="False" CommandName="Edit" 
+                            Text="Edit" />
+                        <asp:LinkButton runat="server" CausesValidation="False" CommandName="Delete" Text="Delete"
+                            OnClientClick="return confirm('Are you certain you want to delete this agent?')" />
                     </ItemTemplate>
                 </asp:TemplateField>
-            
-               
-               
             </Columns>
             <FooterStyle BackColor="Tan" />
             <HeaderStyle BackColor="Tan" Font-Bold="True" />
