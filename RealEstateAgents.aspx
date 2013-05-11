@@ -91,7 +91,8 @@
                 <asp:TemplateField ShowHeader="false" ItemStyle-HorizontalAlign="Center">
                     <InsertItemTemplate>
                         <asp:Button ID="btnInsert" runat="server" CommandName="Insert" Width="60" Text="Insert" />
-                        <asp:Button ID="btnCancel" runat="server" OnClick="CancelAgentInsert" Width="60" Text="Cancel" />
+                        <asp:Button ID="btnCancel" runat="server" OnClick="CancelAgentInsert" Width="60"
+                            CausesValidation="false" Text="Cancel" />
                     </InsertItemTemplate>
                 </asp:TemplateField>
             </Fields>
