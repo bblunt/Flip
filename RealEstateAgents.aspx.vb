@@ -7,9 +7,12 @@ Partial Class RealEstateAgents
     End Sub
 
     Protected Sub btnInsertAgent_Click(sender As Object, e As EventArgs) Handles btnInsertAgent.Click
-        If Page.IsValid Then
-            Me.btnInsertAgent.Visible = False
-            Me.dvAgents.Visible = True
+        If Session("Password") IsNot Nothing Then
+            Dim Password As String = Session("Password").ToString
+            If Password = "carnie" Then
+                Me.btnInsertAgent.Visible = False
+                Me.dvAgents.Visible = True
+            End If
         End If
     End Sub
 
@@ -60,20 +63,6 @@ Partial Class RealEstateAgents
         End If
 
     End Sub
-    ''testing this; it doesn't work yet.
-
-    '' Protected Sub gvAgents_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvAgents.RowDataBound
-    ''     If e.Row.RowType = DataControlRowType.DataRow Then
-
-    '' Dim eb As ButtonType = CType(e.Row.FindControl("EditButton1"), ButtonType) 'Edit LinkButton
-    '' Dim ec As ButtonType = CType(e.Row.FindControl("DeleteButton1"), ButtonType) 'Delete LinkButton
-    ''      If Page.IsValid Then
-    ''           eb.Visible = True
-    ''         ec.Visible = True
-    ''       End If
-
-    ''    End If
-    '' End Sub
 
     Protected Sub gvAgents_RowDeleting(ByVal sender As Object, ByVal e As GridViewDeleteEventArgs) Handles gvAgents.RowDeleting
 
@@ -141,15 +130,16 @@ Partial Class RealEstateAgents
         btnOkPassword.Visible = True
 
     End Sub
-
-    'Protected Sub Page_PreLoad(sender As Object, e As System.EventArgs) Handles Me.PreLoad
-    ' If Session("Password") IsNot Nothing Then
-    '    Else
-    '    Password = CType(Session("Password"), String)
-    '     End If
-    ' End Sub
-
-    ' Protected Sub Page_PreRender(sender As Object, e As System.EventArgs) Handles Me.PreRender
-    '     Session("Password") = Password
-    ' End Sub
+    Protected Sub frmRealEstateAgents_Load(sender As Object, e As System.EventArgs) Handles frmRealEstateAgents.Load
+        If Session("Password") IsNot Nothing Then
+            Dim Password As String = Session("Password").ToString
+            If Password = "carnie" Then
+                lblPassword.Visible = False
+                tbPassword.Visible = False
+                CustomValidator1.Visible = False
+                btnOkPassword.Visible = False
+                btnInsertAgent.Visible = True
+            End If
+        End If
+    End Sub
 End Class
