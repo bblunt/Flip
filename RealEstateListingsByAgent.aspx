@@ -6,7 +6,6 @@
 <head id="Head1" runat="server">
     <title>Real Estate Listings By Agent</title>
     <style type="text/css">
-
         .style1
         {
             width: 22%;
@@ -40,36 +39,60 @@
                 <asp:TemplateField HeaderText="Picture">
                     <InsertItemTemplate>
                         <asp:TextBox ID="txtPicture" runat="server" Text='<%# Eval("Picture")%>' />
+                        <asp:RequiredFieldValidator ID="valPicture" runat="server"
+                                ControlToValidate="txtPicture" ErrorMessage="*" ForeColor="Red" />
                     </InsertItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Address">
                     <InsertItemTemplate>
                         <asp:TextBox ID="txtAddress" runat="server" Text='<%# Eval("Address")%>' />
+                        <asp:RequiredFieldValidator ID="valAddress" runat="server"
+                                ControlToValidate="txtAddress" ErrorMessage="*" ForeColor="Red" />
                     </InsertItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="City">
                     <InsertItemTemplate>
                         <asp:TextBox ID="txtCity" runat="server" Text='<%# Eval("City")%>' />
+                        <asp:RequiredFieldValidator ID="valCity" runat="server"
+                                ControlToValidate="txtCity" ErrorMessage="*" ForeColor="Red" />
                     </InsertItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="State">
                     <InsertItemTemplate>
-                        <asp:TextBox ID="txtState" runat="server" Text='<%# Eval("State")%>' />
+                        <asp:TextBox ID="txtState" runat="server" Text='<%# Eval("State")%>'
+                            MaxLength="2" />
+                        <asp:RequiredFieldValidator ID="valState" runat="server"
+                                ControlToValidate="txtState" ErrorMessage="*" ForeColor="Red" />
                     </InsertItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Zip">
                     <InsertItemTemplate>
                         <asp:TextBox ID="txtZip" runat="server" Text='<%# Eval("Zip")%>' />
+                        <asp:RequiredFieldValidator ID="valZip" runat="server"
+                                ControlToValidate="txtZip" ErrorMessage="*" ForeColor="Red" />
+                        <asp:CompareValidator ID="valZipNum" runat="server" ControlToValidate="txtZip" Type="Integer"
+                                Operator="DataTypeCheck" Display="Dynamic" Text="Please enter valid numeric value."
+                                ForeColor="Red" />
+                        <asp:RangeValidator ID="valZipNumRange" runat="server" ControlToValidate="txtZip" Type="Integer"
+                                MinimumValue="1001" MaximumValue="99999" Display="Dynamic" ForeColor="Red"
+                                Text="Please enter a numeric value greater than 01001, but less than 99950." />
                     </InsertItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Number of Stories">
                     <InsertItemTemplate>
                         <asp:TextBox ID="txtNumberOfStories" runat="server" Text='<%# Eval("Number of Stories")%>' />
+                        <asp:RequiredFieldValidator ID="valNumberOfStories" runat="server"
+                                ControlToValidate="txtNumberOfStories" ErrorMessage="*" ForeColor="Red" />
+                        <asp:CompareValidator ID="valNumberOfStoriesNum" runat="server" ControlToValidate="txtNumberOfStories"
+                                Type="Integer" Operator="DataTypeCheck" Display="Dynamic" Text="Please enter valid numeric value."
+                                ForeColor="Red" />
                     </InsertItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Frame Type">
                     <InsertItemTemplate>
                         <asp:TextBox ID="txtFrameType" runat="server" Text='<%# Eval("Frame Type")%>' />
+                        <asp:RequiredFieldValidator ID="valFrameType" runat="server"
+                                ControlToValidate="txtFrameType" ErrorMessage="*" ForeColor="Red" />
                     </InsertItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Basement">
@@ -83,6 +106,8 @@
                 <asp:TemplateField HeaderText="Heating Type">
                     <InsertItemTemplate>
                         <asp:TextBox ID="txtHeatingType" runat="server" Text='<%# Eval("Heating Type")%>' />
+                        <asp:RequiredFieldValidator ID="valHeatingType" runat="server"
+                                ControlToValidate="txtHeatingType" ErrorMessage="*" ForeColor="Red" />
                     </InsertItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Central Air">
@@ -101,17 +126,28 @@
                 <asp:TemplateField HeaderText="Taxes">
                     <InsertItemTemplate>
                         <asp:TextBox ID="txtTaxes" runat="server" Text='<%# Eval("Taxes")%>' />
+                        <asp:RequiredFieldValidator ID="valTaxes" runat="server"
+                                ControlToValidate="txtTaxes" ErrorMessage="*" ForeColor="Red" />
+                        <asp:CompareValidator ID="valTaxesNum" runat="server" ControlToValidate="txtTaxes"
+                                Type="Double" Operator="DataTypeCheck" Display="Dynamic" Text="Please enter valid numeric value."
+                                ForeColor="Red" />
                     </InsertItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Asking Price">
                     <InsertItemTemplate>
                         <asp:TextBox ID="txtAskingPrice" runat="server" Text='<%# Eval("AskingPrice")%>' />
+                        <asp:RequiredFieldValidator ID="valAskingPrice" runat="server"
+                                ControlToValidate="txtAskingPrice" ErrorMessage="*" ForeColor="Red" />
+                        <asp:CompareValidator ID="valAskingPriceNum" runat="server" ControlToValidate="txtAskingPrice"
+                                Type="Double" Operator="DataTypeCheck" Display="Dynamic" Text="Please enter valid numeric value."
+                                ForeColor="Red" />
                     </InsertItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField ShowHeader="false" ItemStyle-HorizontalAlign="Center">
                     <InsertItemTemplate>
                         <asp:Button ID="btnInsert" runat="server" CommandName="Insert" Width="60" Text="Insert" />
-                        <asp:Button ID="btnCancel" runat="server" OnClick="CancelListingInsert" Width="60" Text="Cancel" />
+                        <asp:Button ID="btnCancel" runat="server" OnClick="CancelListingInsert" Width="60"
+                            CausesValidation="false" Text="Cancel" />
                     </InsertItemTemplate>
                 </asp:TemplateField>
             </Fields>
@@ -121,19 +157,19 @@
             <tr>
                 <td>
                     <asp:Label ID="lblPassword" runat="server" 
-                        Text="To make changes, please enter the password."></asp:Label>
+                        Text="To make changes, please enter the password." />
                 </td>
             </tr>
             <tr>
                 <td class="style2">
                     <asp:TextBox ID="tbPassword" runat="server" style="text-align: center" 
-                        TextMode="Password"></asp:TextBox>
+                        TextMode="Password" />
                 </td>
             </tr>
             <tr>
                 <td>
-                    <asp:CustomValidator ID="CustomValidator1" runat="server" 
-                        ErrorMessage="Password invalid. Access denied." ValidationGroup="Password" ></asp:CustomValidator>
+                    <asp:CustomValidator ID="CustomValidator1" runat="server"
+                        ErrorMessage="Password invalid. Access denied." ValidationGroup="Password" />
                 </td>
             </tr>
             <tr>
@@ -159,6 +195,8 @@
                     </ItemTemplate>
                     <EditItemTemplate>
                         <asp:TextBox ID="txtPicture" runat="server" Text='<%# Eval("Picture")%>' />
+                        <asp:RequiredFieldValidator ID="valPicture" runat="server"
+                                ControlToValidate="txtPicture" ErrorMessage="*" ForeColor="Red" />
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Address" SortExpression="Address">
@@ -167,6 +205,8 @@
                     </ItemTemplate>
                     <EditItemTemplate>
                         <asp:TextBox ID="txtAddress" runat="server" Text='<%# Eval("Address")%>' />
+                        <asp:RequiredFieldValidator ID="valAddress" runat="server"
+                                ControlToValidate="txtAddress" ErrorMessage="*" ForeColor="Red" />
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="City" SortExpression="City">
@@ -175,6 +215,8 @@
                     </ItemTemplate>
                     <EditItemTemplate>
                         <asp:TextBox ID="txtCity" runat="server" Text='<%# Eval("City")%>' />
+                        <asp:RequiredFieldValidator ID="valCity" runat="server"
+                                ControlToValidate="txtCity" ErrorMessage="*" ForeColor="Red" />
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="State" SortExpression="State">
@@ -182,7 +224,10 @@
                         <asp:Label ID="lblState" runat="server" Text='<%# Eval("State")%>' />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="txtState" runat="server" Text='<%# Eval("State")%>' />
+                        <asp:TextBox ID="txtState" runat="server" Text='<%# Eval("State")%>'
+                            MaxLength="2" />
+                        <asp:RequiredFieldValidator ID="valState" runat="server"
+                                ControlToValidate="txtState" ErrorMessage="*" ForeColor="Red" />
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Zip" SortExpression="Zip">
@@ -191,6 +236,14 @@
                     </ItemTemplate>
                     <EditItemTemplate>
                         <asp:TextBox ID="txtZip" runat="server" Text='<%# Eval("Zip")%>' />
+                        <asp:RequiredFieldValidator ID="valZip" runat="server"
+                                ControlToValidate="txtZip" ErrorMessage="*" ForeColor="Red" />
+                        <asp:CompareValidator ID="valZipNum" runat="server" ControlToValidate="txtZip" Type="Integer"
+                                Operator="DataTypeCheck" Display="Dynamic" Text="Please enter valid numeric value."
+                                ForeColor="Red" />
+                        <asp:RangeValidator ID="valZipNumRange" runat="server" ControlToValidate="txtZip" Type="Integer"
+                                MinimumValue="1001" MaximumValue="99999" Display="Dynamic" ForeColor="Red"
+                                Text="Please enter a numeric value greater than 01001, but less than 99950." />
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Number of Stories" SortExpression="Number of Stories">
@@ -199,6 +252,11 @@
                     </ItemTemplate>
                     <EditItemTemplate>
                         <asp:TextBox ID="txtNumberOfStories" runat="server" Text='<%# Eval("Number of Stories")%>' />
+                        <asp:RequiredFieldValidator ID="valNumberOfStories" runat="server"
+                                ControlToValidate="txtNumberOfStories" ErrorMessage="*" ForeColor="Red" />
+                        <asp:CompareValidator ID="valNumberOfStoriesNum" runat="server" ControlToValidate="txtNumberOfStories"
+                                Type="Integer" Operator="DataTypeCheck" Display="Dynamic" Text="Please enter valid numeric value."
+                                ForeColor="Red" />
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Frame Type" SortExpression="Frame Type">
@@ -207,6 +265,8 @@
                     </ItemTemplate>
                     <EditItemTemplate>
                         <asp:TextBox ID="txtFrameType" runat="server" Text='<%# Eval("Frame Type")%>' />
+                        <asp:RequiredFieldValidator ID="valFrameType" runat="server"
+                                ControlToValidate="txtFrameType" ErrorMessage="*" ForeColor="Red" />
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Basement" SortExpression="Basement">
@@ -226,6 +286,8 @@
                     </ItemTemplate>
                     <EditItemTemplate>
                         <asp:TextBox ID="txtHeatingType" runat="server" Text='<%# Eval("Heating Type")%>' />
+                        <asp:RequiredFieldValidator ID="valHeatingType" runat="server"
+                                ControlToValidate="txtHeatingType" ErrorMessage="*" ForeColor="Red" />
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Central Air" SortExpression="Central Air">
@@ -254,6 +316,11 @@
                     </ItemTemplate>
                     <EditItemTemplate>
                         <asp:TextBox ID="txtTaxes" runat="server" Text='<%# Eval("Taxes")%>' />
+                        <asp:RequiredFieldValidator ID="valTaxes" runat="server"
+                                ControlToValidate="txtTaxes" ErrorMessage="*" ForeColor="Red" />
+                        <asp:CompareValidator ID="valTaxesNum" runat="server" ControlToValidate="txtTaxes"
+                                Type="Double" Operator="DataTypeCheck" Display="Dynamic" Text="Please enter valid numeric value."
+                                ForeColor="Red" />
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Asking Price" SortExpression="AskingPrice">
@@ -262,17 +329,21 @@
                     </ItemTemplate>
                     <EditItemTemplate>
                         <asp:TextBox ID="txtAskingPrice" runat="server" Text='<%# Eval("AskingPrice")%>' />
+                        <asp:RequiredFieldValidator ID="valAskingPrice" runat="server"
+                                ControlToValidate="txtAskingPrice" ErrorMessage="*" ForeColor="Red" />
+                        <asp:CompareValidator ID="valAskingPriceNum" runat="server" ControlToValidate="txtAskingPrice"
+                                Type="Double" Operator="DataTypeCheck" Display="Dynamic" Text="Please enter valid numeric value."
+                                ForeColor="Red" />
                     </EditItemTemplate>
                 </asp:TemplateField>
-                 <asp:TemplateField ShowHeader="False">
+                 <asp:TemplateField ShowHeader="False" Visible="false">
                     <EditItemTemplate>
-                        <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="True" CommandName="Update" Text="Save" />
-                        <asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
+                        <asp:LinkButton runat="server" CausesValidation="True" CommandName="Update" Text="Save" />
+                        <asp:LinkButton runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
                     </EditItemTemplate>
                     <ItemTemplate>
-                        <asp:LinkButton ID="LinkButton3" runat="server" CausesValidation="False" CommandName="Edit" 
-                            Text="Edit" />
-                        <asp:LinkButton ID="LinkButton4" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete"
+                        <asp:LinkButton runat="server" CausesValidation="False" CommandName="Edit" Text="Edit" />
+                        <asp:LinkButton runat="server" CausesValidation="False" CommandName="Delete" Text="Delete"
                             OnClientClick="return confirm('Are you certain you want to delete this listing?')" />
                     </ItemTemplate>
                 </asp:TemplateField>

@@ -106,19 +106,19 @@
             <tr>
                 <td>
                     <asp:Label ID="lblPassword" runat="server" 
-                        Text="To make changes, please enter the password."></asp:Label>
+                        Text="To make changes, please enter the password." />
                 </td>
             </tr>
             <tr>
                 <td class="style2">
                     <asp:TextBox ID="tbPassword" runat="server" style="text-align: center" 
-                        TextMode="Password"></asp:TextBox>
+                        TextMode="Password" />
                 </td>
             </tr>
             <tr>
                 <td>
-                    <asp:CustomValidator ID="CustomValidator1" runat="server" 
-                        ErrorMessage="Password invalid. Access denied." ValidationGroup="Password" ></asp:CustomValidator>
+                    <asp:CustomValidator ID="CustomValidator1" runat="server"
+                        ErrorMessage="Password invalid. Access denied." ValidationGroup="Password" />
                 </td>
             </tr>
             <tr>
@@ -126,7 +126,6 @@
                     <asp:Button ID="btnOkPassword" runat="server" Height="27px" 
                         style="margin-left: 4px" Text="OK" ValidationGroup="Password" 
                         Width="61px"/>
-                        
                 </td>
             </tr>
              

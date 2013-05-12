@@ -184,7 +184,7 @@ Partial Class RealEstateListings
         End If
 
     End Sub
-   
+
     Protected Sub frmRealEstateListings_Load(sender As Object, e As System.EventArgs) Handles frmRealEstateListings.Load
         If Session("Password") IsNot Nothing Then
             Dim Password As String = Session("Password").ToString

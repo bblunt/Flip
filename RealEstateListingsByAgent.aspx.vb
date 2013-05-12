@@ -1,6 +1,4 @@
-﻿
-
-Partial Class RealEstateListingsByAgent
+﻿Partial Class RealEstateListingsByAgent
     Inherits System.Web.UI.Page
 
     Dim pNewListingNumber As System.Int32
@@ -27,7 +25,6 @@ Partial Class RealEstateListingsByAgent
                     Me.dvListings.Visible = False
                     Me.btnInsertListing.Visible = False
                 End If
-
             End If
         End If
     End Sub
@@ -77,7 +74,6 @@ Partial Class RealEstateListingsByAgent
                     CType(Me.dvListings.FindControl("txtPicture"), WebControls.TextBox).Text
                 Me.dsListings.InsertParameters.Item("@AskingPrice").DefaultValue = _
                     CType(Me.dvListings.FindControl("txtAskingPrice"), WebControls.TextBox).Text
-
             End If
         End If
     End Sub
@@ -93,29 +89,20 @@ Partial Class RealEstateListingsByAgent
         Return pString
     End Function
 
-    'Protected Sub gvListings_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvListings.RowDataBound
-    '    If Session("Password") IsNot Nothing Then
-    'Dim Password As String = Session("Password").ToString
-    '       If Password = "carnie" Then
-    '           Me.gvListings.Columns(13).Visible = True
-    '      Else
-    '          Me.gvListings.Columns(13).Visible = False
-    '      End If
-    '  End If
-
-    ' End Sub
-
     Protected Sub gvListings_DataBound(sender As Object, e As System.EventArgs) Handles gvListings.DataBound
-        If Me.IsPostBack = False Then
-            Me.gvListings.Columns(13).Visible = False
-        End If
         If Session("Password") IsNot Nothing Then
             Dim Password As String = Session("Password").ToString
             If Password = "carnie" Then
-                Me.gvListings.Columns(13).Visible = True
-                If ddlAgent.SelectedIndex < 0 Then
+                If ddlAgent.SelectedIndex < 1 Then
                     btnInsertListing.Visible = False
+                    Me.gvListings.Columns(13).Visible = False
+                Else
+                    btnInsertListing.Visible = True
+                    Me.gvListings.Columns(13).Visible = True
                 End If
+            Else
+                btnInsertListing.Visible = False
+                Me.gvListings.Columns(13).Visible = False
             End If
         End If
     End Sub
@@ -129,7 +116,6 @@ Partial Class RealEstateListingsByAgent
 
                 Me.dsListings.DeleteParameters.Item("@Listing_Number").DefaultValue = _
                     Me.gvListings.DataKeys(e.RowIndex).Values("Listing Number").ToString()
-
             End If
         End If
     End Sub
@@ -170,7 +156,6 @@ Partial Class RealEstateListingsByAgent
                     CType(Me.gvListings.Rows(e.RowIndex).FindControl("txtAskingPrice"), WebControls.TextBox).Text
                 Me.dsListings.UpdateParameters.Item("@Listing_Number").DefaultValue = _
                     Me.gvListings.DataKeys(e.RowIndex).Values("Listing Number").ToString()
-
             End If
         End If
     End Sub
@@ -205,8 +190,5 @@ Partial Class RealEstateListingsByAgent
                 btnInsertListing.Visible = True
             End If
         End If
-
-
-
     End Sub
 End Class
