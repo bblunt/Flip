@@ -184,6 +184,11 @@
         </table>
         <br />
         <br />
+        <asp:Label ID="lblMinAskingPrice" runat="server" Text="Filter by Minimum Asking Price:" />
+        <asp:TextBox ID="txtMinAskingPrice" runat="server" AutoPostBack="true" />
+        <asp:Label ID="lblMaxAskingPrice" runat="server" Text="Filter by Maximum Asking Price:" />
+        <asp:TextBox ID="txtMaxAskingPrice" runat="server" AutoPostBack="true" />
+        <asp:Label ID="lblConversionCheck" runat="server" Visible="false" ForeColor="Red" />
         <asp:DropDownList ID="ddlSecretAgent" runat="server" DataSourceID="dsAgents" DataValueField="AgentID"
             DataTextField="AgentName" />
         <asp:GridView ID="gvListings" runat="server" AutoGenerateColumns="False" DataKeyNames="Listing Number, AgentID"
@@ -379,8 +384,12 @@
             ProviderName="<%$ ConnectionStrings:RealEstateDatabaseConnection.ProviderName %>"
             DeleteCommand="DELETE FROM [Listings] WHERE (([Listing Number] = @Listing_Number) OR ([Listing Number] IS NULL AND @Listing_Number IS NULL))"
             InsertCommand="INSERT INTO [Listings] ([Listing Number], [Address], [City], [State], [Zip], [Number of Stories], [Frame Type], [Basement], [Heating Type], [Central Air], [Taxes], [School District], [Picture], [AskingPrice], [AgentID]) VALUES (@Listing_Number, @Address, @City, @State, @Zip, @Number_of_Stories, @Frame_Type, @Basement, @Heating_Type, @Central_Air, @Taxes, @School_District, @Picture, @AskingPrice, @AgentID)"
-            SelectCommand="SELECT [li].* FROM [Listings] AS li ORDER BY [li].[State], [li].[City], [li].[Listing Number]"
+            SelectCommand="SELECT [li].* FROM [Listings] AS li WHERE (@MinAskingPrice = 0 OR [li].[AskingPrice] >= @MinAskingPrice) AND (@MaxAskingPrice = 0 OR [li].[AskingPrice] <= @MaxAskingPrice) ORDER BY [li].[State], [li].[City], [li].[Listing Number]"
             UpdateCommand="UPDATE [Listings] SET [Address] = @Address, [City] = @City, [State] = @State, [Zip] = @Zip, [Number of Stories] = @Number_of_Stories, [Frame Type] = @Frame_Type, [Basement] = @Basement, [Heating Type] = @Heating_Type, [Central Air] = @Central_Air, [Taxes] = @Taxes, [School District] = @School_District, [Picture] = @Picture, [AskingPrice] = @AskingPrice, [AgentID] = @AgentID WHERE (([Listing Number] = @Listing_Number) OR ([Listing Number] IS NULL AND @Listing_Number IS NULL))">
+            <SelectParameters>
+                <asp:Parameter Name="@MinAskingPrice" Type="Decimal" DefaultValue="0" />
+                <asp:Parameter Name="@MaxAskingPrice" Type="Decimal" DefaultValue="0" />
+            </SelectParameters>
             <DeleteParameters>
                 <asp:Parameter Name="@Listing_Number" Type="String" />
             </DeleteParameters>

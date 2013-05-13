@@ -87,6 +87,29 @@ Partial Class RealEstateListings
             args.IsValid = False
         End If
     End Sub
+
+    Protected Sub txtMinAskingPrice_TextChanged(sender As Object, e As EventArgs) Handles txtMinAskingPrice.TextChanged
+        Try
+            Dim pTryDecimal As System.Decimal = System.Convert.ToDecimal(Me.txtMinAskingPrice.Text)
+            Me.dsListings.SelectParameters.Item("@MinAskingPrice").DefaultValue = System.Convert.ToString(pTryDecimal)
+            Me.gvListings.DataBind()
+        Catch ex As Exception
+            Me.lblConversionCheck.Visible = True
+            Me.lblConversionCheck.Text = "Please input a valid numeric value for minimum asking price."
+        End Try
+    End Sub
+
+    Protected Sub txtMaxAskingPrice_TextChanged(sender As Object, e As EventArgs) Handles txtMaxAskingPrice.TextChanged
+        Try
+            Dim pTryDecimal As System.Decimal = System.Convert.ToDecimal(Me.txtMaxAskingPrice.Text)
+            Me.dsListings.SelectParameters.Item("@MaxAskingPrice").DefaultValue = System.Convert.ToString(pTryDecimal)
+            Me.gvListings.DataBind()
+        Catch ex As Exception
+            Me.lblConversionCheck.Visible = True
+            Me.lblConversionCheck.Text = "Please input a valid numeric value for maximum asking price."
+        End Try
+    End Sub
+
     Protected Function CurrencyFormat(ByVal PriceToBeFormatted As Object) As System.String
         Dim pString As System.String = String.Format("{0:C}", PriceToBeFormatted)
         Return pString
@@ -160,7 +183,6 @@ Partial Class RealEstateListings
     Protected Sub gvListings_RowUpdated(sender As Object, e As GridViewUpdatedEventArgs) Handles gvListings.RowUpdated
         Me.Response.Redirect("~\RealEstateListings.aspx")
     End Sub
-
 
     Protected Sub btnOkPassword_Click(sender As Object, e As System.EventArgs) Handles btnOkPassword.Click
         Page.Validate("Password")
