@@ -80,7 +80,7 @@
     </table>
    </center>
         <center>
-        <center style="background-color: #ED1C24; width: 1058px; margin-top: 0px;"> 
+        <center style="background-color: #ED1C24; width: 1058px; margin-top: 0px; height: 450px;"> 
         
             <br />
             <br />
@@ -129,11 +129,20 @@
             <br class="style6" />
             <asp:Button ID="NewWeatherButton" runat="server" Text="Update weather location data" 
                 Height="26px" CssClass="style5" />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+        Developed by: Benjamin Blunt &amp; Chris Havenstein<br />
+                          
         </center>
         </center>
-    <p>
-        &nbsp;</p>
-   
+    </p>
     </form>
     </body>
 </html>
