@@ -92,6 +92,7 @@ Partial Class RealEstateListings
         Try
             Dim pTryDecimal As System.Decimal = System.Convert.ToDecimal(Me.txtMinAskingPrice.Text)
             Me.dsListings.SelectParameters.Item("@MinAskingPrice").DefaultValue = System.Convert.ToString(pTryDecimal)
+            Me.lblConversionCheck.Visible = False
             Me.gvListings.DataBind()
         Catch ex As Exception
             Me.lblConversionCheck.Visible = True
@@ -103,6 +104,7 @@ Partial Class RealEstateListings
         Try
             Dim pTryDecimal As System.Decimal = System.Convert.ToDecimal(Me.txtMaxAskingPrice.Text)
             Me.dsListings.SelectParameters.Item("@MaxAskingPrice").DefaultValue = System.Convert.ToString(pTryDecimal)
+            Me.lblConversionCheck.Visible = False
             Me.gvListings.DataBind()
         Catch ex As Exception
             Me.lblConversionCheck.Visible = True
